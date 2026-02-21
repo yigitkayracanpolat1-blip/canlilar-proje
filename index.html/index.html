@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Canlılar Alemi</title>
+  <style>
+
+    .images {
+  display: flex;            /* Yan yana dizer */
+  justify-content: center;  /* Ortalar */
+  gap: 20px;                /* Aralarına boşluk koyar */
+}
+
+.images img {
+  max-width: 300px;
+  border-radius: 10px;
+}
+html, body {
+  height: 100%;              /* Sayfanın tamamını kapla */
+  margin: 0;
+  padding: 0;
+}
+
+body { 
+  font-family: Arial, sans-serif; 
+  text-align: center; 
+  background-color: #f4f4f4; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* Dikey ortalama */
+  align-items: center;       /* Yatay ortalama */
+}
+
+button {
+  margin: 12px; 
+  padding: 18px 30px;   /* Butonları büyütür */
+  font-size: 22px;      /* Yazıyı büyütür */
+  cursor: pointer; 
+  border: none; 
+  border-radius: 8px;
+  background-color: #28a745; /* Daha canlı yeşil */
+  color: white;
+  font-weight: bold;    /* Yazıyı kalın yapar */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Hafif gölge efekti */
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover { 
+  background-color: #218838; /* Hover için koyu yeşil */
+  transform: scale(1.05);    /* Üzerine gelince biraz büyür */
+}
+h1 { 
+  font-size: 40px;           /* Başlığı büyüt */
+  margin-bottom: 40px;       /* Kutudan biraz boşluk bırak */
+}
+
+#content { 
+  padding: 50px; 
+  background: white; 
+  border-radius: 12px; 
+  min-height: 500px;         /* Kutunun yüksekliğini artır */
+  width: 80%; 
+  font-size: 22px;           /* Yazıları büyüt */
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* İçeriği ortala */
+  justify-content: center;
+}
+
+img { 
+  margin: 25px; 
+  max-width: 450px;          /* Resimleri büyüt */
+  border-radius: 12px; 
+}
+  </style>
+</head>
+<body>
+  <h1>Canlılar Domainleri</h1>
+  <div id="menu">
+    <button onclick="showCategory('bakteri')">Bakteriler</button>
+    <button onclick="showCategory('arke')">Arkeler</button>
+    <button onclick="showCategory('okaryot')">Ökaryotlar</button>
+  </div>
+
+  <div id="content"></div>
+
+  <script>
+    function goBack() {
+    document.getElementById("content").innerHTML = "";
+   }
+    function showCategory(category) {
+      let c = document.getElementById("content");
+
+      // Bakteriler
+      if (category === "bakteri") {
+        c.innerHTML = `
+          <h2>Bakteriler</h2>
+          <button onclick="showSub('yararli')">Yararlı Bakteriler</button>
+          <button onclick="showSub('zararli')">Zararlı Bakteriler</button>
+          <br><br>
+        <button onclick="goBack()">⬅ Geri</button>
+
+        
+
+        `;
+      }
+
+      // Arkeler
+      else if (category === "arke") {
+        c.innerHTML = `
+          <h2>Arkeler</h2>
+          <ul>
+            <li>Zor Koşulların Canlısı: Diğer canlıların yaşayamayacağı kadar sıcak, tuzlu, asitli veya soğuk ortamlarda yaşayabilirler.</li>
+            <li>Özel Hücre Duvarı: Bakterilerdeki gibi peptidoglikan değil, yalancı (psödo) peptidoglikan denilen farklı bir hücre duvarına sahiptirler.</li>
+            <li>Genetik Benzerlik: DNA yapıları ve protein sentezi mekanizmaları bakımından bakterilerden çok ökaryotlara (gelişmiş canlılara) benzerler.</li>
+            <li>DHastalık Yapmazlar: Bilinen hiçbir arke türü insanda veya hayvanda hastalık yapmaz (patojen değildir).</li>
+            <li>Ekonomik Önem: Atık suların temizlenmesi, metal cevherlerinin işlenmesi ve biyogaz üretimi gibi sanayi alanlarında kullanılırlar.</li>
+          </ul>
+          <div class="images"> 
+          <img src="arke1.jpg">
+          <img src="arke2.jpg">
+          <img src="arke3.jpg">
+           </div>
+           <br><br>
+        <button onclick="goBack()">⬅ Geri</button>
+
+         
+
+        `;
+      }
+
+      // Ökaryotlar
+      else if (category === "okaryot") {
+        c.innerHTML = `
+          <h2>Ökaryotlar</h2>
+          <button onclick="showSub('protista')">Protista</button>
+          <button onclick="showSub('bitki')">Bitkiler</button>
+          <button onclick="showSub('mantar')">Mantarlar</button>
+          <button onclick="showSub('hayvan')">Hayvanlar</button>
+          <br><br>
+    <button onclick="goBack()">⬅ Geri</button>
+         
+        `;
+      }
+    }
+        function showSub(sub) {
+      let c = document.getElementById("content");
+
+      // Yararlı Bakteriler
+      if (sub === "yararli") {
+        c.innerHTML = `
+          <h2>Yararlı Bakteriler</h2>
+          <ul>
+            <li>Madde Döngüsü: Doğadaki ölü organizmaları parçalayarak mineralleri toprağa geri kazandırırlar (Saprofitlik).</li>
+            <li>Vitamin Üretimi: İnsan ve hayvan bağırsaklarında yaşayıp karşılığında bize B ve K vitaminleri sağlarlar.</li>
+            <li>Fermantasyon: Şeker ve süt gibi maddeleri işleyerek yoğurt, turşu ve peynir gibi gıdaların oluşmasını sağlayan kimyasal değişimleri yaparlar.</li>
+            <li>Azot Fiksasyonu: Havadaki azotu bitkilerin kullanabileceği hale getirerek tarımın ve doğal yaşamın devamını sağlarlar.</li>
+            <li>Hastalık Engelleme: Vücudumuzda veya doğada yer kaplayarak zararlı (patojen) bakterilerin çoğalmasına izin vermezler, yani bir nevi koruma kalkanı oluştururlar.</li>
+          </ul>
+          <div class="images">
+          <img src="yararli1.jpg">
+          <img src="yararli2.jpg">
+          <img src="yararli3.jpg">
+          </div>\
+          <br><br>
+          <button onclick="showCategory('bakteri')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Zararlı Bakteriler
+      else if (sub === "zararli") {
+        c.innerHTML = `
+          <h2>Zararlı Bakteriler</h2>
+          <ul>
+            <li>Hastalık Yapma (Patojenlik): İnsan, hayvan veya bitki dokularına yerleşerek normal hücre fonksiyonlarını bozarlar.</li>
+            <li>Toksin Üretimi: Vücut içine girdiklerinde zehirli maddeler (toksin) salgılayarak bağışıklık sistemini çökertirler.</li>
+            <li>Kapsül Yapısı: Birçoğunda hücre duvarının dışında, bağışıklık hücrelerinden korunmalarını sağlayan koruyucu bir kapsül bulunur.</li>
+            <li>Parazit Beslenme: Kendi besinlerini üretemezler; ihtiyacı olan besini üzerinde yaşadığı (konak) canlıdan hazır olarak alırlar.</li>
+            <li>Hızlı Çoğalma: Uygun sıcaklık ve besin bulduklarında vücut içinde çok hızlı bölünerek kısa sürede enfeksiyona neden olurlar.</li>
+          </ul>
+          <div class="images">
+          <img src="zararli1.jpg">
+          <img src="zararli2.jpg">
+          <img src="zararli3.jpg">
+          </div>
+          <br><br>
+          <button onclick="showCategory('bakteri')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Protista
+      else if (sub === "protista") {
+        c.innerHTML = `
+          <h2>Protista</h2>
+          <ul>
+            <li>Çekirdek Yapısı: Kalıtsal materyalleri (DNA) özel bir çekirdek zarı ile çevrilidir; sitoplazmada dağınık halde bulunmaz.</li>
+            <li>Gelişmiş Organeller: Enerji üretimi için mitokondri, fotosentez yapan türlerinde ise kloroplast gibi zarlı organellere sahiptirler.</li>
+            <li>Boşaltım Sistemi: Tatlı sularda yaşayan türlerinde, hücre içine giren fazla suyu dışarı pompalayan kontraktil koful adı verilen özel bir yapı bulunur.</li>
+            <li>Hareket Mekanizması: Yer değiştirmek için özelleşmiş kamçı, sil veya yalancı ayak gibi yapılara sahiptirler.</li>
+            <li>Beslenme Çeşitliliği: Bazı türleri kendi besinini üretirken, bazıları dışarıdan hazır alır, bazıları ise her iki yöntemi de kullanabilir.</li>
+          </ul>
+          <div class="images">
+          <img src="protista1.jpg">
+          <img src="protista2.jpg">
+          <img src="protista3.jpg">
+          </div>
+          <br><br>
+          <button onclick="showCategory('okaryot')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Bitkiler
+      else if (sub === "bitki") {
+        c.innerHTML = `
+          <h2>Bitkiler</h2>
+          <ul>
+            <li>Hücre Çeperi (Duvarı): Hücre zarlarının dışında selüloz adı verilen sert bir maddeden oluşmuş koruyucu bir duvar bulunur.</li>
+            <li>Kloroplast ve Fotosentez: Sitoplazmalarında kloroplast organeli taşırlar; bu sayede güneş ışığını kullanarak kendi besinlerini (nişasta) üretirler.</li>
+            <li>Depo Polisakkariti: Fotosentez sonucu ürettikleri fazla glikozu nişasta olarak depo ederler.</li>
+            <li>Hareketsizlik: Toprağa bağlı yaşarlar; yer değiştirme hareketi yapamazlar, sadece ışığa veya suya yönelme gibi durum hareketleri gösterirler.</li>
+            <li>Dokulaşma: Belirli görevleri yapmak üzere özelleşmiş gerçek doku ve organlara (kök, gövde, yaprak) sahiptirler.</li>
+          </ul>
+          <div class="images">
+          <img src="bitki1.jpg">
+          <img src="bitki2.jpg">
+          <img src="bitki3.jpg">
+          </div>
+          <br><br>
+          <button onclick="showCategory('okaryot')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Mantarlar
+      else if (sub === "mantar") {
+        c.innerHTML = `
+          <h2>Mantarlar</h2>
+          <ul>
+            <li>Hücre Çeperi (Kitin): Hücrelerinin dışında kitin adı verilen, azot içeren sert bir koruyucu duvar bulunur.</li>
+            <li>Depo Polisakkariti (Glikojen): Fazla besinlerini nişasta olarak değil, tıpkı hayvanlar gibi glikojen şeklinde depo ederler.</li>
+            <li>Beslenme Şekli (Heterotrof): Kendi besinlerini üretemezler; ya ölüleri parçalayan ayrıştırıcılar ya da canlılar üzerinde yaşayan parazitler olarak beslenirler.</li>
+            <li>Hücre Yapısı: Çoğu türü çok hücrelidir ve hif adı verilen ince iplikçiklerden oluşur; ancak bira mayası gibi tek hücreli olanları da vardır.</li>
+            <li>Üreme Şekli: Genellikle spor denilen, olumsuz koşullara dayanıklı özel hücrelerle çok hızlı bir şekilde çoğalırlar.</li>
+          </ul>
+          <div class="images">
+          <img src="mantar1.jpg">
+          <img src="mantar2.jpg">
+          <img src="mantar3.jpg">
+          </div>
+          <br><br>
+          <button onclick="showCategory('okaryot')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Hayvanlar
+      else if (sub === "hayvan") {
+        c.innerHTML = `
+          <h2>Hayvanlar</h2>
+          <button onclick="showSub('omurgali')">Omurgalı Hayvanlar</button>
+          <button onclick="showSub('omurgasiz')">Omurgasız Hayvanlar</button>
+          <br><br>
+          <button onclick="showCategory('okaryot')">⬅ Geri</button>
+        `;
+      }
+
+      // Omurgalılar
+      else if (sub === "omurgali") {
+        c.innerHTML = `
+          <h2>Omurgalı Hayvanlar</h2>
+          <button onclick="showSub('balik')">Balıklar</button>
+          <button onclick="showSub('amfibi')">Amfibiler</button>
+          <button onclick="showSub('surungen')">Sürüngenler</button>
+          <button onclick="showSub('kus')">Kuşlar</button>
+          <button onclick="showSub('memeli')">Memeliler</button>
+          <br><br>
+          <button onclick="showSub('hayvan')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Omurgasızlar
+      else if (sub === "omurgasiz") {
+        c.innerHTML = `
+          <h2>Omurgasız Hayvanlar</h2>
+          <button onclick="showSub('sunger')">Süngerler</button>
+          <button onclick="showSub('solenter')">Sölenterler</button>
+          <button onclick="showSub('solucan')">Solucanlar</button>
+          <button onclick="showSub('yumusakca')">Yumuşakçalar</button>
+          <button onclick="showSub('eklembacakli')">Eklem Bacaklılar</button>
+          <button onclick="showSub('derisidikenli')">Derisi Dikenliler</button>
+          <br><br>
+          <button onclick="showSub('hayvan')">⬅ Geri</button>
+        `;
+      }
+
+      // Balıklar
+      else if (sub === "balik") {
+        c.innerHTML = `
+          <h2>Balıklar</h2>
+          <ul>
+            <li>Solunum Şekli: Tamamı yaşamları boyunca solungaç solunumu yapar; sudaki çözünmüş oksijeni kullanırlar.</li>
+            <li>Kalp Yapısı: Kalpleri iki odacıklıdır (bir kulakçık, bir karıncık). Kalplerinde her zaman kirli kan bulunur ve vücuda temiz kan gönderilir.</li>
+            <li>Vücut Isısı: Soğukkanlı (değişken ısılı) canlılardır; vücut sıcaklıkları yaşadıkları suyun sıcaklığına göre değişir.</li>
+            <li>Üreme ve Gelişme: Genellikle dış döllenme ve dış gelişme görülür; yumurtalarını suya bırakırlar ve yavrular suyun içinde gelişir.</li>
+            <li>Boşaltım Atığı: Azotlu boşaltım atıkları zehir oranı yüksek olan amonyaktır; bol suyla dışarı atarlar.</li>
+          </ul>
+          <div class="images">
+          <img src="balik1.jpg">
+          <img src="balik2.jpg">
+          <img src="balik3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgali')">⬅ Geri</button>
+
+
+        `;
+      }
+
+      // Amfibiler
+      else if (sub === "amfibi") {
+        c.innerHTML = `
+          <h2>Amfibiler</h2>
+          <ul>
+            <li>Çift Yaşam Döngüsü: Yaşamlarının ilk evresi (larva) suda geçerken, erginleştiklerinde karaya çıkarlar; bu yüzden "iki yaşamlı" denir.</li>
+            <li>Başkalaşım (Metamorfoz): Yumurtadan çıkan yavrular (iribaş) balığa benzer. Zamanla bacakları çıkar ve kuyrukları kaybolarak ergin bir canlıya dönüşürler.</li>
+            <li>Deri Solunumu: Derileri her zaman nemli ve yumuşaktır. Akciğerleri tam gelişmediği için derileri üzerinden de nefes alırlar (gaz alışverişi yaparlar).</li>
+            <li>Kalp Yapısı: Kalpleri üç odacıklıdır (iki kulakçık, bir karıncık). Karıncıkta temiz ve kirli kan birbirine karışır, bu yüzden vücutlarında karışık kan dolaşır.</li>
+            <li>Vücut Isısı: Soğukkanlı (değişken ısılı) canlılardır; çevre sıcaklığı düştüğünde kış uykusuna yatarlar.</li>
+          </ul>
+          <div class="images">
+          <img src="amfibi1.jpg">
+          <img src="amfibi2.jpg">
+          <img src="amfibi3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgali')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Sürüngenler
+      else if (sub === "surungen") {
+        c.innerHTML = `
+          <h2>Sürüngenler</h2>
+          <ul>
+            <li>Keratin Pullar: Vücut yüzeyleri tamamen keratin yapılı sert pullarla veya kemiksi levhalarla kaplıdır.</li>
+            <li>Akciğer Solunumu: Gaz alışverişini sağlayan gelişmiş akciğerlere sahiptirler; hayatlarının hiçbir döneminde solungaç kullanmazlar.</li>
+            <li>Sert Kabuklu Yumurta: Embriyonun kurumadan gelişmesini sağlayan, dış etkilere dayanıklı kalsiyum içerikli sert kabuklu yumurtalar üretirler.</li>
+            <li>ç Döllenme: Üreme hücreleri (sperm ve yumurta) ana canlının vücudunun içinde birleşir.</li>
+            <li>Değişken Isılı Yapı: Vücut sıcaklıklarını sabit tutacak bir mekanizmaları yoktur, bu yüzden çevre sıcaklığına göre hareket ederler ve soğuk dönemlerde kış uykusuna yatarlar.</li>
+          </ul>
+          <div class="images">
+          <img src="surungen1.jpg">
+          <img src="surungen2.jpg">
+          <img src="surungen3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgali')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Kuşlar
+      else if (sub === "kus") {
+        c.innerHTML = `
+          <h2>Kuşlar</h2>
+          <ul>
+            <li>Vücut Örtüsü (Tüyler): Vücutları karakteristik olarak tüylerle kaplıdır. Tüyler hem uçmayı kolaylaştırır hem de ısı yalıtımı sağlar. (Not: Kanatlardaki tüyler ile vücudu örten tüyler farklı yapıdadır).</li>
+            <li>Akciğer ve Hava Keseleri: Akciğerlerine bağlı hava keseleri bulunur. Bu keseler, hem uçuş için gerekli olan oksijen ihtiyacını karşılar hem de vücut ağırlığını hafifleterek uçmayı kolaylaştırır.</li>
+            <li>Sıcakkanlılık (Sabit Isılı): Vücut sıcaklıkları çevre sıcaklığına göre değişmez, her zaman sabittir. Bu yüzden kış uykusuna yatmazlar.</li>
+            <li>Gaga ve Dişsiz Yapı: Ağızlarında diş bulunmaz; bunun yerine beslenme şekline göre özelleşmiş (etçil, otçul vb.) kemiksi bir gaga yapısı vardır. Besinleri öğütmek için kaslı bir taşlık kullanırlar.</li>
+            <li>Hafif İskelet: Kemiklerinin çoğunun içi boştur ve hava ile doludur. Bu durum, kuşun dayanıklılığından ödün vermeden toplam vücut ağırlığının azalmasını sağlar.</li>
+          </ul>
+          <div class="images">
+          <img src="kus1.jpg">
+          <img src="kus2.jpg">
+          <img src="kus3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgali')">⬅ Geri</button>
+
+        `;
+      }
+
+            // Memeliler
+      else if (sub === "memeli") {
+        c.innerHTML = `
+          <h2>Memeliler</h2>
+          <ul>
+            <li>Vücut Örtüsü (Kıllar): Vücutları karakteristik olarak kıllarla kaplıdır (Kuşlardaki tüy ile karıştırılmamalıdır, biyolojide kıl ve tüy farklıdır).</li>
+            <li>Yavruları Sütle Besleme: Dişilerinde bulunan süt bezleri sayesinde yavrularını kendi ürettikleri sütle beslerler. Yavru bakımı bu grupta çok gelişmiştir.</li>
+            <li>Diyafram Kaslı Yapı: Göğüs ve karın boşluğunu birbirinden ayıran, soluk alıp vermeye yardımcı olan kaslı bir diyaframa sahiptirler.</li>
+            <li>Olgun Alyuvarlar: Memelilerin olgun alyuvar hücreleri, daha fazla oksijen taşıyabilmek için çekirdeklerini kaybetmiştir.</li>
+            <li>Sıcakkanlılık (Sabit Isılı): Vücut sıcaklıkları çevre şartlarına göre değişmez, sabittir. Akciğer solunumu yaparlar ve kalpleri 4 odacıklıdır.</li>
+          </ul>
+          <div class="images">
+          <img src="memeli1.jpg">
+          <img src="memeli2.jpg">
+          <img src="memeli3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgali')">⬅ Geri</button>
+          
+        `;
+      }
+
+      // Süngerler
+      else if (sub === "sunger") {
+        c.innerHTML = `
+          <h2>Süngerler</h2>
+          <ul>
+            <li>En Basit Yapı: Gerçek doku ve organları (sinir, kas, sindirim sistemi gibi) bulunmayan tek hayvan grubudur.</li>
+            <li>Porlu Yapı: Vücutları "por" adı verilen çok sayıda delikle kaplıdır. Su bu deliklerden girer, vücut boşluğunda süzülür ve üstteki büyük açıklıktan çıkar.</li>
+            <li>Hücre İçi Sindirim: Besinlerini sudan süzerek alırlar ve sindirim hücrelerin içerisinde gerçekleşir.</li>
+            <li>Hareketsiz Yaşam: Ergin bireyler denizlerde veya tatlı sularda bir zemine sabitlenmiş olarak yaşarlar, yer değiştirme hareketi yapamazlar.</li>
+            <li>İskelet Yapısı: Vücutlarına şekil veren ve desteklik sağlayan, spikül adı verilen iğnemsi kristaller veya spongin denilen esnek protein lifleri bulunur.</li>
+          </ul>
+          <div class="images">
+          <img src="sunger1.jpg">
+          <img src="sunger2.jpg">
+          <img src="sunger3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgasiz')">⬅ Geri</button>
+
+        `;
+      }
+
+      // Sölenterler
+      else if (sub === "solenter") {
+        c.innerHTML = `
+          <h2>Sölenterler</h2>
+          <ul>
+            <li>Yatay/Işınsal Simetri: Vücutları merkezden geçen her düzlemde birbirine eş parçalara bölünür (radyal simetri).</li>
+            <li>Yakıcı Hücreler (Knidosit): Avlarını etkisiz hale getirmek ve kendilerini korumak için dokunaçlarında (tentakül) zehirli yakıcı kapsüller bulunur.</li>
+            <li>Ağsı Sinir Sistemi: Hayvanlar aleminde sinir sisteminin ilk görüldüğü gruptur. Ancak merkezi bir beyin yoktur; sinir hücreleri bir ağ gibi tüm vücuda yayılmıştır.</li>
+            <li>Tek Açıklıklı Sindirim: Hem ağız hem de anüs görevi gören tek bir açıklıkları vardır. Besinler buradan girer, atıklar yine buradan atılır.</li>
+            <li>İki Farklı Form: Bazıları sabit yaşar (Polip form; örneğin mercan), bazıları ise serbestçe yüzer (Medüz form; örneğin denizanası).</li>
+          </ul>
+          <div class="images">
+          <img src="solenter1.jpg">
+          <img src="solenter2.jpg">
+          <img src="solenter3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgasiz')">⬅ Geri</button>
+
+
+        `;
+      }
+
+      // Solucanlar
+      else if (sub === "solucan") {
+        c.innerHTML = `
+          <h2>Solucanlar</h2>
+          <ul>
+            <li>Bilateral (Düzlemsel) Simetri: Vücutları sağ ve sol olmak üzere iki eş parçaya ayrılabilir; bu, sölenterlerden daha gelişmiş bir özelliktir.</li>
+            <li>Doku Gelişimi: Mezoderm denilen üçüncü bir embriyonik tabaka ilk kez bu grupta ortaya çıkar, bu da daha karmaşık organların oluşmasını sağlar.</li>
+            <li>Nemli Deri: Genellikle nemli ortamlarda yaşarlar ve çoğu, gaz alışverişini yüzey alanı geniş olan nemli derileri üzerinden (deri solunumu) yapar.</li>
+            <li>Yaşam Şekli: Bir kısmı toprak ve su gibi doğal ortamlarda serbest yaşarken, birçoğu başka canlıların vücudunda parazit olarak beslenir.</li>
+            <li>Üreme: Çoğu çift cinsiyetlidir (hermafrodit), yani hem erkek hem dişi üreme hücresi üretebilirler ancak genellikle başka bir bireyle döllenmeyi tercih ederler.</li>
+          </ul>
+          <div class="images">
+          <img src="solucan1.jpg">
+          <img src="solucan2.jpg">
+          <img src="solucan3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgasiz')">⬅ Geri</button>
+
+
+        `;
+      }
+
+      // Yumuşakçalar
+      else if (sub === "yumusakca") {
+        c.innerHTML = `
+          <h2>Yumuşakçalar</h2>
+          <ul>
+            <li>Manto Tabakası: Vücutlarını örten ince bir doku tabakasıdır. Bu tabaka, canlının dışındaki o sert kabuğu salgılayan asıl mutfaktır.</li>
+            <li>Kaslı Ayak: Hareket etmek, zemine tutunmak veya kumun altına gizlenmek için kullandıkları çok güçlü, kaslı bir uzantıları vardır.</li>
+            <li>Radula (Dişli Dil): Ağızlarında besinleri törpülemek veya parçalamak için kullandıkları, üzerinde minik dişler bulunan zımpara benzeri bir dil yapısı bulunur.</li>
+            <li>Vücut Boşluğu: İç organları vücudun orta kısmında, "vücut kitlesi" denilen bir bölgede toplanmıştır; karmaşık bir iç yapıya sahiptirler.</li>
+            <li>Açık/Kapalı Sistem: Kanları genellikle vücut boşluklarına yayılır (açık dolaşım), ancak grubun bazı üyeleri çok hızlı hareket edebilmek için kanı tamamen damarların içinde tutan bir sisteme sahiptir.</li>
+          </ul>
+          <div class="images">
+          <img src="yumusakca1.jpg">
+          <img src="yumusakca2.jpg">
+          <img src="yumusakca3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgasiz')">⬅ Geri</button>
+
+
+        `;
+      }
+
+      // Eklem Bacaklılar
+      else if (sub === "eklembacakli") {
+        c.innerHTML = `
+          <h2>Eklem Bacaklılar</h2>
+          <ul>
+            <li>Dış İskelet (Kitin): Vücutlarının dışında kitin maddesinden yapılmış sert bir zırh bulunur. Bu zırh hem koruma sağlar hem de su kaybını önler.</li>
+            <li>Eklemli Üyeler: İsimlerini buradan alırlar. Hareket etmeyi sağlayan bacakları ve diğer uzantıları (anten gibi) eklemli bir yapıya sahiptir.</li>
+            <li>Deri Değiştirme: Dışlarındaki kitin iskelet canlıyla birlikte büyümez. Bu yüzden büyümek için eski iskeletlerini belirli aralıklarla atıp yenisini yaparlar.</li>
+            <li>Açık Dolaşım: Kanları damarların içinde hapsolmamıştır; vücut boşluklarındaki hücrelerin arasında serbestçe dolaşır.</li>
+            <li>Trake Solunumu: Özellikle karada yaşayan türlerinde, vücut içine dallanmış borucuklar (trakeler) sayesinde hava doğrudan hücrelere taşınır.</li>
+          </ul>
+          <div class="images">
+          <img src="eklembacakli1.jpg">
+          <img src="eklembacakli2.jpg">
+          <img src="eklembacakli3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgasiz')">⬅ Geri</button>
+
+
+        `;
+      }
+
+      // Derisi Dikenliler
+      else if (sub === "derisidikenli") {
+        c.innerHTML = `
+          <h2>Derisi Dikenliler</h2>
+          <ul>
+            <li>Kalsiyum Karbonat İskelet: Derilerinin hemen altında kemiksi plakçıklardan oluşan bir iç iskelet bulunur. Bu iskeletten dışarıya doğru uzanan dikenler onlara isimlerini verir.</li>
+            <li>Su-Damar Sistemi: Vücutlarında kan yerine deniz suyunun dolaştığı eşsiz bir kanal sistemi vardır. Bu sistem hem beslenmeyi hem de hareketi sağlar.</li>
+            <li>Tüp Ayaklar: Su-damar sistemine bağlı, vantuzlu binlerce minik "tüp ayak" ile hareket ederler, zemine tutunurlar ve avlarını yakalarlar.</li>
+            <li>Rejenerasyon (Yenilenme): Yenilenme yetenekleri çok yüksektir. Örneğin, bir deniz yıldızının kopan kolu kendini tamamlayabilir, hatta kopan o koldan yeni bir deniz yıldızı oluşabilir.</li>
+            <li>Işınsal Simetri: Ergin bireylerde merkezden çevreye doğru yayılan (yıldız gibi) bir vücut planı vardır. Ancak ilginç bir bilgi: Larva dönemindeyken vücutları bizim gibi iki eş parçalıdır (bilateral).</li>
+          </ul>
+          <div class="images">
+          <img src="derisidikenli1.jpg">
+          <img src="derisidikenli2.jpg">
+          <img src="derisidikenli3.jpg">
+          </div>
+          <br><br>
+    <button onclick="showSub('omurgasiz')">⬅ Geri</button>
+
+          
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
